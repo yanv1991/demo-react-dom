@@ -5,11 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "build:sourcemap": "SOURCEMAP=true next build",
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "next": "9.4.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "webpack-bundle-analyzer": "^3.8.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
   }
 }

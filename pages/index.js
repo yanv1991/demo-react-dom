@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic';
 
-// import MyComponent from '../components/MyComponent';
+import OtherComponent from '../components/OtherComponent';
 
-const MyComponent = dynamic(() => import('../components/MyComponent'), { ssr: false });
+const MyComponent = dynamic(() => import('../components/MyComponent'));
 
 export default function Home() {
   return (
@@ -17,7 +17,10 @@ export default function Home() {
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-
+        <p>using dynamic with child: </p>
+        <MyComponent />
+        <p>other component with lazy child: </p>
+        <OtherComponent />
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
@@ -167,9 +170,7 @@ export default function Home() {
             </p>
           </a>
         </div>
-        <MyComponent />
       </main>
-
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

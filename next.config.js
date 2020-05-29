@@ -11,7 +11,8 @@ module.exports = {
                 break
             }
         }
-        configOptions.plugins.push(
+        if (process.env.ANALYZE) {
+            configOptions.plugins.push(
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',
                 reportFilename: isServer
@@ -19,6 +20,7 @@ module.exports = {
                     : './analyze/client.html',
             }),
         );
+        }
         return configOptions;
     },
 };

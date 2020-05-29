@@ -1,9 +1,11 @@
 
 import react from 'react';
 
+import styles from './Child.sass';
+
 function Child (props) {
     return (
-      <div>I am a child</div>
+      <div className={styles.container}>I am a child</div>
     );
   }
 

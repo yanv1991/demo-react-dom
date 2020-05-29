@@ -1,18 +1,25 @@
+// next.config.js
+const withPlugins = require('next-compose-plugins');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-module.exports = {
+const withSass = require('@zeit/next-sass')
+
+module.exports = withPlugins([
+  [withSass, {
+    cssModules: true,
+  }],
+], {
     target: 'serverless',
     webpack: (config, { isServer }) => {
-        const configOptions = config;
-        configOptions.devtool = 'source-map';
-        configOptions.output.sourceMapFilename = '[file].map';
-        for (const plugin of configOptions.plugins) {
+        config.devtool = 'source-map';
+        config.output.sourceMapFilename = '[file].map';
+        for (const plugin of config.plugins) {
             if (plugin.constructor.name === 'TerserPlugin') {
                 plugin.options.sourceMap = true
                 break
             }
         }
         if (process.env.ANALYZE) {
-            configOptions.plugins.push(
+            config.plugins.push(
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',
                 reportFilename: isServer
@@ -21,6 +28,6 @@ module.exports = {
             }),
         );
         }
-        return configOptions;
+        return config;
     },
-};
+});

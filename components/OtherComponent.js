@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 
 const Child = React.lazy(() => import('../components/Child'));
 
-function MyComponent (props) {
+function OtherComponent (props) {
   const isServer = typeof window === "undefined";
   const fallback = <div>loading...</div>;
 
@@ -22,4 +22,4 @@ function MyComponent (props) {
   );
 }
 
-export default MyComponent;
+export default OtherComponent;

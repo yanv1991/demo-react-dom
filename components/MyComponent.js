@@ -1,12 +1,13 @@
 
 import react from 'react';
 
+import styles from './MyComponent.scss';
 import OtherChild from './OtherChild';
 
 function MyComponent (props) {
     return (
       <>
-        <div>I am a component</div>
+        <div className={styles.container}>I am a component</div>
         <OtherChild />
       </>
     );

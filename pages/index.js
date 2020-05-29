@@ -2,7 +2,7 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic';
 
 import OtherComponent from '../components/OtherComponent';
-
+// import MyComponent from '../components/MyComponent';
 const MyComponent = dynamic(() => import('../components/MyComponent'));
 
 export default function Home() {

@@ -1,6 +1,6 @@
 // next.config.js
 // const withPlugins = require('next-compose-plugins');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const withSass = require('@zeit/next-sass')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
@@ -12,15 +12,15 @@ module.exports = {
         const extraLoaders = isServer ? [] : [ExtractCssChunks.loader];
         config.module.rules.push(
             {
-                    test: /\.(sass|scss)$/,
+                    test: /\.(sass|scss|css)$/,
                     use: [
                         ...extraLoaders,
                         {
                             loader: 'css-loader',
                             options: {
                                 modules: true,
-                                sourceMap: dev,
-                                importLoaders: 1,
+                                // sourceMap: dev,
+                                // importLoaders: 1,
                                 onlyLocals: isServer
                             }
                         },
@@ -46,16 +46,6 @@ module.exports = {
             extractCssInitialized = true
         }
 
-        if (process.env.ANALYZE) {
-            config.plugins.push(
-            new BundleAnalyzerPlugin({
-                analyzerMode: 'static',
-                reportFilename: isServer
-                    ? '../analyze/server.html'
-                    : './analyze/client.html',
-            }),
-        );
-        }
         return config;
     },
 }

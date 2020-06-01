@@ -1,7 +1,7 @@
 
 import react from 'react';
 
-import styles from './MyComponent.scss';
+import styles from './MyComponent.module.scss';
 import OtherChild from './OtherChild';
 
 function MyComponent (props) {

@@ -1,12 +1,12 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const withSass = require('@zeit/next-sass')
+// const withSass = require('@zeit/next-sass')
 
 module.exports = withPlugins([
-  [withSass, {
+  /*[withSass, {
     cssModules: true,
-  }],
+  }], */
 ], {
     target: 'serverless',
     webpack: (config, { isServer }) => {

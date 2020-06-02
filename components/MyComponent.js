@@ -7,7 +7,7 @@ import OtherChild from './OtherChild';
 function MyComponent (props) {
     return (
       <>
-        <div className={styles.container}>I am a component</div>
+        <div className={styles.myContainer}>I am a component</div>
         <OtherChild />
       </>
     );

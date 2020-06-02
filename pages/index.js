@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic';
-
-import OtherComponent from '../components/OtherComponent';
 // import MyComponent from '../components/MyComponent';
-const MyComponent = dynamic(() => import('../components/MyComponent'));
+import OtherComponent from '../components/OtherComponent';
+
+const MyComponent = dynamic(() => import(/* webpackChunkName: "ssr-cpm-mycomponent" */ '../components/MyComponent'));
 
 export default function Home() {
   return (

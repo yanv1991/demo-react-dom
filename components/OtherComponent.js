@@ -1,23 +1,14 @@
-import React, { Suspense } from 'react';
+import React from 'react';
+import dynamic from 'next/dynamic';
 
-const Child = React.lazy(() => import('../components/Child'));
+// const Child = React.lazy(() => import('../components/Child'));
+const Child = dynamic(() => import(/* webpackChunkName: "ssr-cpm-child" */ '../components/Child'));
 
 function OtherComponent (props) {
-  const isServer = typeof window === "undefined";
-  const fallback = <div>loading...</div>;
-
   return (
     <>
       <div>I am other component</div>
-        {
-        isServer ? (
-            fallback
-        ) : (
-            <Suspense fallback={fallback}>
-             <Child />
-            </Suspense>
-        )
-        }
+      <Child />
     </>
   );
 }
